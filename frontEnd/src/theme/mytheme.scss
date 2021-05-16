@@ -1,0 +1,63 @@
+@import '~@angular/material/theming';
+// Be sure that you only ever include this mixin once!
+$custom-typography: mat-typography-config(
+  $font-family: "'Zeta Reticuli', sans-serif !important;",
+);
+$light-typography: mat-typography-config(
+  $font-family: "Georgia, serif !important;",
+);
+@include mat-core();
+
+// Available color palettes: https://material.io/design/color/
+// Default theme
+$theme-light-primary: mat-palette($mat-blue-gray);
+$theme-light-accent: mat-palette($mat-gray, 800, A400, A400);
+$theme-light-warn: mat-palette($mat-red);
+// Alien theme
+$theme-alien-primary: mat-palette($mat-teal, 700);
+$theme-alien-accent: mat-palette($mat-light-green);
+$theme-alien-warn: mat-palette($mat-light-green);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$theme-light: mat-light-theme($theme-light-primary, $theme-light-accent, $theme-light-warn);
+$theme-alien: mat-light-theme($theme-alien-primary, $theme-light-accent, $theme-light-warn);
+
+@keyframes blinker {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes appear {
+  from {
+    visibility: hidden;
+  }
+  to {
+    visibility: visible;
+  }
+}
+
+
+// Include theme styles for core and each component used in your app.
+// ColorSchemeService does the job.
+.color-scheme-alien {
+  @include angular-material-theme($theme-alien);
+  @include angular-material-typography($custom-typography);
+  font-family: mat-font-family($custom-typography);
+  @include mat-snack-bar-theme(mat-light-theme($theme-alien-primary, mat-palette($mat-teal, A400), $theme-alien-accent));
+}
+
+.color-scheme-light {
+  @include angular-material-theme($theme-light);
+  //@include angular-material-typography($light-typography);
+  font-family: mat-font-family($light-typography);
+  @include mat-snack-bar-theme(mat-light-theme($theme-light-primary, mat-palette($mat-red), $theme-light-accent));
+}
+
+//@include mat-snack-bar-theme(mat-light-theme($theme-light-primary, mat-palette($mat-red), $theme-light-warn));
