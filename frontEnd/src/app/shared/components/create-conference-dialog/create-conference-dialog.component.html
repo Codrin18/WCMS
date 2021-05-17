@@ -1,0 +1,89 @@
+<h1 mat-dialog-title>Create a new conference</h1>
+
+<form [formGroup]="formConference" (ngSubmit)="onCreateClick()">
+  Value: {{formConference.value | json}}
+  <hr>
+  <div class="row">
+    <div class="column">
+      <div mat-dialog-title>Conference info</div>
+      <div mat-dialog-content class="field-container">
+        <mat-form-field>
+          <mat-label>Conference name</mat-label>
+          <input matInput type="text" formControlName="conferenceName"/>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Begin date</mat-label>
+          <input matInput type="date" formControlName="startDate"/>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>End date</mat-label>
+          <input matInput type="date" formControlName="endDate"/>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Conference web page</mat-label>
+          <input matInput type="url" formControlName="website"/>
+        </mat-form-field>
+        <mat-checkbox labelPosition="before" formControlName="allowTwoDeadlines" (change)="disableSecondDeadline()">
+          Enable two deadlines?
+        </mat-checkbox>
+        <mat-form-field>
+          <mat-label>Proposals deadline</mat-label>
+          <input matInput type="date" formControlName="proposalDeadline"/>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Abstracts deadline</mat-label>
+          <input matInput type="date" formControlName="abstractDeadline">
+        </mat-form-field>
+        <mat-checkbox labelPosition="before" formControlName="allowUpload">Allow to upload full paper?</mat-checkbox>
+        <mat-form-field>
+          <mat-label>Bidding deadline</mat-label>
+          <input matInput type="date" formControlName="biddingDeadline"/>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Evaluation deadline</mat-label>
+          <input matInput type="date" formControlName="evaluationDeadline"/>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Entry fee</mat-label>
+          <input matInput type="number" formControlName="taxFee"/>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Number of allowed reviews per paper</mat-label>
+          <input matInput type="number" formControlName="nrOfReviews"/>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="column">
+      <div mat-dialog-title>Invite committee members</div>
+      <div mat-dialog-content formArrayName="members">
+        <button mat-fab color="accent" type="button" (click)="addMember()" aria-label="Example ith a group add icon">
+          <mat-icon>group_add</mat-icon>
+        </button>
+        <br/><br/>
+        <span *ngFor="let member of conferenceMembers.controls; let i = index;" [formGroupName]="i">
+          <br/>
+          <mat-form-field class="member-field">
+            <mat-label>Member email</mat-label>
+            <input matInput type="text" formControlName="email">
+          </mat-form-field>
+          <mat-form-field class="member-field">
+            <mat-label>Role</mat-label>
+            <select matNativeControl formControlName="role">
+                <option value="" disabled>Choose member role</option>
+                <option value="PC_MEMBER">PC Member</option>
+                <option value="STEERING_COMMITTEE_MEMBER">SC Member</option>
+                <option value="CO_CHAIR">Co-Chair</option>
+            </select>
+          </mat-form-field>
+          <button mat-raised-button color="warn" (click)="removeMember(i)">X</button>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-raised-button color="accent" type="submit" [disabled]="formConference.invalid">Create conference</button>
+    <button mat-button color="accent" type="button" (click)="onCancelClick()">Cancel</button>
+  </div>
+</form>

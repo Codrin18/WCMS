@@ -1,0 +1,19 @@
+.field {
+    min-width: 400px;
+    min-height: 30px;
+  }
+  
+  .field-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #add-email-icon {
+    margin-bottom: 60px;
+    transform: scale(1.5);
+  }
+  
+  #add-email-icon:hover {
+    color: darkred;
+  }
+  
