@@ -97,31 +97,31 @@ export class AddAbstractDialogComponent implements OnInit {
     this.showSpinner = true;
 
     // upload file
-    this.onUpload().subscribe({
-      next: (response: Submission) => {
-        this.submission.abstractPaper = response.id;
-        this.submissionsService.addAbstract(conferenceId, this.submission).subscribe({
-          next: (responseSub: Submission) => {
-            this.snackBar.open('Abstract paper submitted.', 'Ok', {
-              duration: 1000
-            });
-            // I have to copy this line everywhere because I'm not pipe-ing RxJS
-            this.showSpinner = false;
-            this.dialogRef.close(responseSub);
-          },
-          error: err => {
-            console.error('Error! ' + err);
-            alert('Error occurred while submitting.');
-            this.showSpinner = false;
-          }
-        });
-      },
-      error: err => {
-        console.error('Error! ' + err);
-        alert('Error occurred while uploading file.');
-        this.showSpinner = false;
-      }
-    });
+    // this.onUpload().subscribe({
+    //   next: (response: Submission) => {
+    //     this.submission.abstractPaper = response.id;
+    //     this.submissionsService.addAbstract(conferenceId, this.submission).subscribe({
+    //       next: (responseSub: Submission) => {
+    //         this.snackBar.open('Abstract paper submitted.', 'Ok', {
+    //           duration: 1000
+    //         });
+    //         // I have to copy this line everywhere because I'm not pipe-ing RxJS
+    //         this.showSpinner = false;
+    //         this.dialogRef.close(responseSub);
+    //       },
+    //       error: err => {
+    //         console.error('Error! ' + err);
+    //         alert('Error occurred while submitting.');
+    //         this.showSpinner = false;
+    //       }
+    //     });
+    //   },
+    //   error: err => {
+    //     console.error('Error! ' + err);
+    //     alert('Error occurred while uploading file.');
+    //     this.showSpinner = false;
+    //   }
+    // });
   }
 
 

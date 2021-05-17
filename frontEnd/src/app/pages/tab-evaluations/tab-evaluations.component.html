@@ -1,1 +1,90 @@
-<p>tab-evaluations works!</p>
+<h1>Evaluations of all submissions: </h1>
+
+<div class="submissions">
+  <ng-container>
+    <mat-card class="submission-card" *ngFor="let submission of submissions;let i = index;">
+      <mat-card-header>
+        <div mat-card-avatar class="submission-header-image"></div>
+        <mat-card-title>{{submission.title}}</mat-card-title>
+      </mat-card-header>
+      <br>
+      <mat-card-content>
+        <p>
+          <span class="field">Abstract: </span>
+          <i *ngIf="submission.abstractPaper; then thenAbstractBlock else elseAbstractBlock"></i>
+          <ng-template #thenAbstractBlock> <span class="downloadSpan" (click)="downloadAbstractPaper(i)">
+              Click to download</span></ng-template>
+          <ng-template #elseAbstractBlock>none</ng-template>
+        </p>
+        <p>
+          <span class="field">Authors: </span>
+          <ng-container *ngFor="let author of submission.authors;let j = index">
+            {{author.fullName}}<span *ngIf="j < submission.authors.length-1">,</span>
+          </ng-container>
+        </p>
+        <p><span class="field">Topics: </span>{{submission.topics}}</p>
+        <p><span class="field">Keywords: </span>{{submission.keywords}}</p>
+        <p>
+          <span class="field">Fullpaper: </span>
+          <i *ngIf="submission.fullPaper; then thenFullpaperBlock else elseFullpaperBlock">none</i>
+          <ng-template #thenFullpaperBlock> <span class="downloadSpan" (click)="downloadFullPaper(i)">
+              Click here to download</span></ng-template>
+          <ng-template #elseFullpaperBlock>none</ng-template>
+        </p>
+        <hr>
+        <b>Reviews:</b>
+        <ng-container *ngIf="submission.finalVerdict">
+          <i id="final-verdict">{{submission.finalVerdict}}</i>
+        </ng-container>
+        <span *ngIf="!hasReviews(submission)" style="font-style: italic;">
+            none yet
+        </span>
+        <br>
+        <ng-container *ngFor="let review of submission.reviews">
+          <i>{{review.verdict}}</i>, {{review.user.fullName}}<br>
+        </ng-container>
+      </mat-card-content>
+
+      <mat-card-actions *ngIf="hasReviews(submission)">
+        <button mat-raised-button color="accent" (click)="sendToReviewer(submission, i)">
+          Send to another reviewer
+        </button>
+        <mat-form-field appearance="fill">
+          <mat-label>
+            <span
+              [hidden]="this.submissionPossibleReviewers[i] && this.submissionPossibleReviewers[i].length === 0">
+              Select member for review
+            </span>
+            <span
+              [hidden]="this.submissionPossibleReviewers[i] && this.submissionPossibleReviewers[i].length !== 0">
+              No available members
+            </span>
+          </mat-label>
+
+          <!--          Disable if the request is not done and possibleReviewers is empty-->
+          <!--          https://stackoverflow.com/a/57828405/9442199 -->
+          <mat-select [(value)]="anotherReviewersEmail[i]" [disabled]="!!!this.submissionPossibleReviewers[i]">
+            <mat-option *ngFor="let pcMember of this.submissionPossibleReviewers[i]" [value]="pcMember.email">
+              {{pcMember.email}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <br>
+        <button mat-raised-button color="accent" (click)="requestDiscussion(submission)">Request discussion</button>
+        <button mat-raised-button color="accent" (click)="chooseForThem(submission.id, i)">Choose for them</button>
+        <mat-form-field>
+          <mat-label>Select an option</mat-label>
+          <mat-select [(value)]="localVerdicts[i]">
+            <mat-option value="WEAK_ACCEPT" style="color: darkseagreen;">Weak Accept</mat-option>
+            <mat-option value="ACCEPT" style="color: green;">Accepted</mat-option>
+            <mat-option value="STRONG_ACCEPT" style="color: darkgreen;">Strong Accept</mat-option>
+            <mat-option value="WEAK_REJECT" style="color: indianred;">Weak Reject</mat-option>
+            <mat-option value="REJECT" style="color: red;">Rejected</mat-option>
+            <mat-option value="STRONG_REJECT" style="color: darkred;">Strong Reject</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-actions>
+    </mat-card>
+  </ng-container>
+</div>

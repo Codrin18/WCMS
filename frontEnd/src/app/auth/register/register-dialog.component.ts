@@ -72,4 +72,3 @@ export class RegisterDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 }
-
