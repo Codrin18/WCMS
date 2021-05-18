@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Submission} from '../../shared/models/submission';
-import {AuthService} from '../../auth/auth.service';
+import {AuthService} from '../../login/auth.service';
 import {SubmissionsService} from '../../shared/services/submissions.service';
 import {Verdict} from '../../shared/models/verdict';
 import {MatDialog} from '@angular/material/dialog';
-import {ShowRecommendationsDialogComponent} from '../../shared/components/show-recomandation-dialog/show-recomandation-dialog.component';
+import {ShowRecommendationsDialogComponent} from '../../shared/components/show-recommendations-dialog/show-recommendations-dialog.component';
 
 @Component({
   selector: 'app-tab-results',
@@ -76,4 +76,3 @@ export class TabResultsComponent implements OnInit {
     this.submissionsService.downloadFile(this.submissionsReviewed[i].fullPaper);
   }
 }
-

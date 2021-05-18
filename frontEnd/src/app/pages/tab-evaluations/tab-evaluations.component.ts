@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Submission} from '../../shared/models/submission';
 import {SubmissionsService} from '../../shared/services/submissions.service';
-import {AuthService} from '../../auth/auth.service';
+import {AuthService} from '../../login/auth.service';
 import {User} from '../../shared/models/user';
 import {ConferencesService} from '../../shared/services/conferences.service';
 import {Conference} from '../../shared/models/conference';
@@ -88,7 +88,21 @@ export class TabEvaluationsComponent implements OnInit {
       } as User,
     } as Review;
 
-  
+    this.submissionsService.createReview(this.authService.conference.id, review).subscribe({
+      next: (response: Review) => {
+        this.snackBar.open('Users assigned to review.', 'Ok', {
+          duration: 1000,
+        });
+        currentSubmission.reviews.push(response);
+        (this.anotherReviewersEmail)[index] = null;
+      },
+      error: _ => {
+        this.snackBar.open('Cannot assign users!', '', {
+          duration: 1000,
+          panelClass: ['warning'],
+        });
+      }
+    });
   }
 
   requestDiscussion(submission: Submission) {
@@ -148,4 +162,3 @@ export class TabEvaluationsComponent implements OnInit {
     this.submissionsService.downloadFile(this.submissions[i].fullPaper);
   }
 }
-

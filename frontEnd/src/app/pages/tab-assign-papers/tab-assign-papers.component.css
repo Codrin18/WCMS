@@ -1,25 +1,30 @@
 .submissions {
-    position: absolute;
-    left: 1%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 87%;
-  }
-  
-  .submission-card {
-    margin-bottom: 17px;
-    margin-right: 17px;
-    max-width: 390px;
-    min-width: 390px;
-    text-align: center;
-    box-shadow: 3px 3px 5px  #ccc;
-  }
-  
-  .tab-main-message {
-    font-size: 30px;
-    font-style: italic;
-    font-weight: lighter;
-  }
-  
-  
+  position: absolute;
+  left: 1%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 87%;
+}
+
+.submission-card {
+  margin-bottom: 17px;
+  margin-right: 17px;
+  max-width: 390px;
+  min-width: 390px;
+  text-align: center;
+  box-shadow: 3px 3px 5px  #ccc;
+}
+
+.tab-main-message {
+  font-size: 30px;
+  font-style: italic;
+  font-weight: lighter;
+}
+
+
+
+
+
+
+

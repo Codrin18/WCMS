@@ -4,7 +4,7 @@ import {User} from '../../models/user';
 import {MatDialogRef} from '@angular/material/dialog';
 import {SubmissionsService} from '../../services/submissions.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {AuthService} from '../../../auth/auth.service';
+import {AuthService} from '../../../login/auth.service';
 import {isEmpty} from 'rxjs/operators';
 
 @Component({
@@ -97,31 +97,31 @@ export class AddAbstractDialogComponent implements OnInit {
     this.showSpinner = true;
 
     // upload file
-    // this.onUpload().subscribe({
-    //   next: (response: Submission) => {
-    //     this.submission.abstractPaper = response.id;
-    //     this.submissionsService.addAbstract(conferenceId, this.submission).subscribe({
-    //       next: (responseSub: Submission) => {
-    //         this.snackBar.open('Abstract paper submitted.', 'Ok', {
-    //           duration: 1000
-    //         });
-    //         // I have to copy this line everywhere because I'm not pipe-ing RxJS
-    //         this.showSpinner = false;
-    //         this.dialogRef.close(responseSub);
-    //       },
-    //       error: err => {
-    //         console.error('Error! ' + err);
-    //         alert('Error occurred while submitting.');
-    //         this.showSpinner = false;
-    //       }
-    //     });
-    //   },
-    //   error: err => {
-    //     console.error('Error! ' + err);
-    //     alert('Error occurred while uploading file.');
-    //     this.showSpinner = false;
-    //   }
-    // });
+    this.onUpload().subscribe({
+      next: (response: Submission) => {
+        this.submission.abstractPaper = response.id;
+        this.submissionsService.addAbstract(conferenceId, this.submission).subscribe({
+          next: (responseSub: Submission) => {
+            this.snackBar.open('Abstract paper submitted.', 'Ok', {
+              duration: 1000
+            });
+            // I have to copy this line everywhere because I'm not pipe-ing RxJS
+            this.showSpinner = false;
+            this.dialogRef.close(responseSub);
+          },
+          error: err => {
+            console.error('Error! ' + err);
+            alert('Error occurred while submitting.');
+            this.showSpinner = false;
+          }
+        });
+      },
+      error: err => {
+        console.error('Error! ' + err);
+        alert('Error occurred while uploading file.');
+        this.showSpinner = false;
+      }
+    });
   }
 
 

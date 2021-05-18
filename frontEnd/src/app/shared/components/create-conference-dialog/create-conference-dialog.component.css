@@ -1,36 +1,40 @@
 .field {
-    min-width: 400px;
-    min-height: 30px;
-  }
-  
-  .field-container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .column {
-    float: left;
-    width: 48%;
-    margin-left: 2%;
-  }
-  
-  .row {
-    background: #f6f6f6;
-    border: 1px solid #ccc;
-    overflow: hidden;
-    padding: 10px;
-  }
-  
-  .member-field {
-    padding-right: 17px;
-  }
-  
-  
-  @keyframes example {
-    from {margin-left:-100%;}
-    to {margin-left:0;}
-  }
-  
-  .member-field {
-    animation: example 0.5s ease-out;
-  }
+  min-width: 400px;
+  min-height: 30px;
+}
+
+.field-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.column {
+  float: left;
+  width: 48%;
+  margin-left: 2%;
+}
+
+.row {
+  background: #f6f6f6;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.member-field {
+  padding-right: 17px;
+}
+
+
+@keyframes example {
+  from {margin-left:-100%;}
+  to {margin-left:0;}
+}
+
+.member-field {
+  animation: example 0.5s ease-out;
+}
+
+
+
+

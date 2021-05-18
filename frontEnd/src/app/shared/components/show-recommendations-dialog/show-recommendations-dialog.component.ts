@@ -4,9 +4,9 @@ import {Review} from '../../models/review';
 import {Submission} from '../../models/submission';
 
 @Component({
-  selector: 'app-show-recomandation-dialog',
-  templateUrl: './show-recomandation-dialog.component.html',
-  styleUrls: ['./show-recomandation-dialog.component.css']
+  selector: 'app-show-recommendations-dialog',
+  templateUrl: './show-recommendations-dialog.component.html',
+  styleUrls: ['./show-recommendations-dialog.component.css']
 })
 export class ShowRecommendationsDialogComponent implements OnInit {
   yourRecommendation: string;

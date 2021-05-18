@@ -1,17 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddAbstractDialogComponent } from './add-abstract-dialog.component';
 
-describe('AddAbstractDialogComponent', () => {
+describe('TabAbstractDialogComponent', () => {
   let component: AddAbstractDialogComponent;
   let fixture: ComponentFixture<AddAbstractDialogComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
       declarations: [ AddAbstractDialogComponent ]
     })
-    .compileComponents();
-  });
+      .compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AddAbstractDialogComponent);

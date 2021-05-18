@@ -1,17 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TabSubmissionsComponent } from './tab-submissions.component';
 
-describe('TabSubmissionsComponent', () => {
+describe('SubmissionsComponent', () => {
   let component: TabSubmissionsComponent;
   let fixture: ComponentFixture<TabSubmissionsComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
       declarations: [ TabSubmissionsComponent ]
     })
     .compileComponents();
-  });
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TabSubmissionsComponent);

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Submission} from '../../shared/models/submission';
 import {SubmissionsService} from '../../shared/services/submissions.service';
 import {User} from '../../shared/models/user';
-import {AuthService} from '../../auth/auth.service';
+import {AuthService} from '../../login/auth.service';
 import {Review} from '../../shared/models/review';
 import {MatSnackBar} from '@angular/material/snack-bar';
 

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Submission} from '../../shared/models/submission';
 import {SubmissionsService} from '../../shared/services/submissions.service';
-import {AuthService} from '../../auth/auth.service';
+import {AuthService} from '../../login/auth.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {User} from '../../shared/models/user';
 
@@ -81,4 +81,3 @@ export class TabBiddingComponent implements OnInit {
     this.submissionsService.downloadFile(this.submissions[i].fullPaper);
   }
 }
-

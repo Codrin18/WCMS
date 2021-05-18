@@ -1,48 +1,47 @@
 <button mat-raised-button id="pay-button" *ngIf="!isPayed" color="accent" (click)="openAttendSection()">
-    Attend live to the conference
-  </button>
-  
-  <div id="section-container" [ngClass]="isBlurredClass">
-    <h1 id="feel-free-header" *ngIf="isPayed">
-      Feel free to participate in any of the available conference sessions:
-    </h1>
-    <br>
-    <ng-container class="submissions" *ngFor="let section of sections; let i = index;">
-      <mat-card class="submission-card">
-        <mat-card-header>
-          <!--        <div mat-card-avatar class="submission-header-image"></div>-->
-          <mat-card-title>{{section.title}}</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p><span class="field">Start time: </span>{{section.startTime * 1000 | date:'medium'}}</p>
-          <p><span class="field">End time: </span>{{section.endTime * 1000 | date:'medium'}}</p>
-          <p><span class="field">Section Chair: </span>{{section.sectionChair.fullName}}</p>
-          <p><span class="field">Seats left: </span>{{section.seats}}</p>
-          <hr>
-          <p><span class="field">Speakers: </span></p>
-          <ng-container *ngFor="let speaker of section.speakers; let j = index;">
-            {{speaker.fullName}}<span *ngIf="j < section.speakers.length-1">,</span>
-          </ng-container>
-          <hr>
-          <p><span class="field">Presented papers: </span></p>
-          <ng-container *ngFor="let submission of section.submissions; let j = index;">
-            {{submission.title}}<br>
-          </ng-container>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-raised-button color="accent" id="participateButton"
-                  (click)="attendButton(section.sectionId, i)"
-                  [disabled]="isCurrentUserListener(i)"
-          >
-            Participate
-          </button>
-        </mat-card-actions>
-      </mat-card>
-    </ng-container>
-  </div>
-  
-  <button mat-fab color="warn" id="add-section-button" *ngIf="isChair()" (click)="openAddSection()"
-          matTooltip="Create section">
-    <mat-icon>add</mat-icon>
-  </button>
-  
+  Attend live to the conference
+</button>
+
+<div id="section-container" [ngClass]="isBlurredClass">
+  <h1 id="feel-free-header" *ngIf="isPayed">
+    Feel free to participate in any of the available conference sessions:
+  </h1>
+  <br>
+  <ng-container class="submissions" *ngFor="let section of sections; let i = index;">
+    <mat-card class="submission-card">
+      <mat-card-header>
+        <!--        <div mat-card-avatar class="submission-header-image"></div>-->
+        <mat-card-title>{{section.title}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p><span class="field">Start time: </span>{{section.startTime * 1000 | date:'medium'}}</p>
+        <p><span class="field">End time: </span>{{section.endTime * 1000 | date:'medium'}}</p>
+        <p><span class="field">Section Chair: </span>{{section.sectionChair.fullName}}</p>
+        <p><span class="field">Seats left: </span>{{section.seats}}</p>
+        <hr>
+        <p><span class="field">Speakers: </span></p>
+        <ng-container *ngFor="let speaker of section.speakers; let j = index;">
+          {{speaker.fullName}}<span *ngIf="j < section.speakers.length-1">,</span>
+        </ng-container>
+        <hr>
+        <p><span class="field">Presented papers: </span></p>
+        <ng-container *ngFor="let submission of section.submissions; let j = index;">
+          {{submission.title}}<br>
+        </ng-container>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="accent" id="participateButton"
+                (click)="attendButton(section.sectionId, i)"
+                [disabled]="isCurrentUserListener(i)"
+        >
+          Participate
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </ng-container>
+</div>
+
+<button mat-fab color="warn" id="add-section-button" *ngIf="isChair()" (click)="openAddSection()"
+        matTooltip="Create section">
+  <mat-icon>add</mat-icon>
+</button>

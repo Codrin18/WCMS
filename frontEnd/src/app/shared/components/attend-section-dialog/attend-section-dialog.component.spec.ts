@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AttendSectionDialogComponent } from './attend-section-dialog.component';
 
@@ -6,12 +6,12 @@ describe('AttendSectionDialogComponent', () => {
   let component: AttendSectionDialogComponent;
   let fixture: ComponentFixture<AttendSectionDialogComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
       declarations: [ AttendSectionDialogComponent ]
     })
     .compileComponents();
-  });
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AttendSectionDialogComponent);

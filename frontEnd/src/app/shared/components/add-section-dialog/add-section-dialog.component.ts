@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Section} from '../../models/section';
 import {MatDialogRef} from '@angular/material/dialog';
 import {SubmissionsService} from '../../services/submissions.service';
-import {AuthService} from '../../../auth/auth.service';
+import {AuthService} from '../../../login/auth.service';
 import {Submission} from '../../models/submission';
 import {Verdict} from '../../models/verdict';
 import {User} from '../../models/user';

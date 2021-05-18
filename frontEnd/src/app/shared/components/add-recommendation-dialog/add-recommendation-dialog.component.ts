@@ -5,9 +5,9 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {Review} from '../../models/review';
 
 @Component({
-  selector: 'app-add-recomandation-dialog',
-  templateUrl: './add-recomandation-dialog.component.html',
-  styleUrls: ['./add-recomandation-dialog.component.css']
+  selector: 'app-add-recommendation-dialog',
+  templateUrl: './add-recommendation-dialog.component.html',
+  styleUrls: ['./add-recommendation-dialog.component.css']
 })
 export class AddRecommendationDialogComponent implements OnInit {
   review: Review = {} as Review; // New fields for the review
@@ -48,3 +48,4 @@ export class AddRecommendationDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 }
+

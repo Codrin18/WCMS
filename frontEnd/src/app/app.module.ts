@@ -3,29 +3,29 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {RouterModule} from '@angular/router';
-import {LoginDialogComponent} from './auth/login/login-dialog.component';
+import {LoginDialogComponent} from './login/login/login-dialog.component';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppAngularMaterialModule} from './app-angular-material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {RegisterDialogComponent} from './auth/register/register-dialog.component';
-import {AppRoutingModule} from './app-routing.module';
+import {RegisterDialogComponent} from './login/register/register-dialog.component';
+import {AppRoutingModule} from './app-routing-module';
 import {HomePageComponent} from './pages/home-page/home-page.component';
 import {ConferenceComponent} from './shared/components/conference/conference.component';
 import {TabDetailsComponent} from './pages/tab-details/tab-details.component';
-import {AuthGuard} from './auth/auth.guard';
-import {AuthService} from './auth/auth.service';
+import {AuthGuard} from './login/auth.guard';
+import {AuthService} from './login/auth.service';
 import {TabSubmissionsComponent} from './pages/tab-submissions/tab-submissions.component';
-import {TokenInterceptorService} from './auth/token-interceptor.service';
+import {TokenInterceptorService} from './login/token-interceptor.service';
 import {TabReviewingComponent} from './pages/tab-reviewing/tab-reviewing.component';
 import {TabBiddingComponent} from './pages/tab-bidding/tab-bidding.component';
 import {TabAssignPapersComponent} from './pages/tab-assign-papers/tab-assign-papers.component';
-import {ShowRecommendationsDialogComponent} from './shared/components/show-recomandation-dialog/show-recomandation-dialog.component';
+import {ShowRecommendationsDialogComponent} from './shared/components/show-recommendations-dialog/show-recommendations-dialog.component';
 import {TabEvaluationsComponent} from './pages/tab-evaluations/tab-evaluations.component';
 import {AddAbstractDialogComponent} from './shared/components/add-abstract-dialog/add-abstract-dialog.component';
 import {TabSectionsComponent} from './pages/tab-sections/tab-sections.component';
 import {AddSectionDialogComponent} from './shared/components/add-section-dialog/add-section-dialog.component';
-import {AddRecommendationDialogComponent} from './shared/components/add-recomandation-dialog/add-recomandation-dialog.component';
+import {AddRecommendationDialogComponent} from './shared/components/add-recommendation-dialog/add-recommendation-dialog.component';
 import {AttendSectionDialogComponent} from './shared/components/attend-section-dialog/attend-section-dialog.component';
 import {TabResultsComponent} from './pages/tab-results/tab-results.component';
 import {CreateConferenceDialogComponent} from './shared/components/create-conference-dialog/create-conference-dialog.component';
@@ -79,4 +79,3 @@ import {EditAbstractDialogComponent} from './shared/components/edit-abstract-dia
 })
 export class AppModule {
 }
-

@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TabAssignPapersComponent } from './tab-assign-papers.component';
 
@@ -6,12 +6,12 @@ describe('TabAssignPapersComponent', () => {
   let component: TabAssignPapersComponent;
   let fixture: ComponentFixture<TabAssignPapersComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
       declarations: [ TabAssignPapersComponent ]
     })
     .compileComponents();
-  });
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TabAssignPapersComponent);

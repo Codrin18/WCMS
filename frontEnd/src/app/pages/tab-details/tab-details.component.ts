@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Conference} from '../../shared/models/conference';
-import {AuthService} from '../../auth/auth.service';
+import {AuthService} from '../../login/auth.service';
 import {ConferencesService} from '../../shared/services/conferences.service';
 import {Role} from '../../shared/models/role';
 
@@ -35,4 +35,3 @@ export class TabDetailsComponent implements OnInit {
     return userRole === Role.Chair || userRole === Role.CoChair;
   }
 }
-

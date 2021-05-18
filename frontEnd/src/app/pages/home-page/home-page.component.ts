@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {Conference} from '../../shared/models/conference';
 import {ConferencesService} from '../../shared/services/conferences.service';
-import {AuthService} from '../../auth/auth.service';
+import {AuthService} from '../../login/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {User} from '../../shared/models/user';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
-import {RegisterDialogComponent} from '../../auth/register/register-dialog.component';
+import {RegisterDialogComponent} from '../../login/register/register-dialog.component';
 import {DataService} from '../../shared/services/data.service';
 
 @Component({
@@ -115,3 +115,5 @@ export class HomePageComponent implements OnInit {
     });
   }
 }
+
+

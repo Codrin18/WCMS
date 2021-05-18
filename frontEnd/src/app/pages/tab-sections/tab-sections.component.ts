@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../auth/auth.service';
+import {AuthService} from '../../login/auth.service';
 import {Role} from '../../shared/models/role';
 import {MatDialog} from '@angular/material/dialog';
 import {AddSectionDialogComponent} from '../../shared/components/add-section-dialog/add-section-dialog.component';
@@ -129,4 +129,3 @@ export class TabSectionsComponent implements OnInit {
     });
   }
 }
-

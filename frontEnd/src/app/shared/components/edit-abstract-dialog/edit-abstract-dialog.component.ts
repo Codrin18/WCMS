@@ -3,7 +3,7 @@ import {User} from '../../models/user';
 import {Submission} from '../../models/submission';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {SubmissionsService} from '../../services/submissions.service';
-import {AuthService} from '../../../auth/auth.service';
+import {AuthService} from '../../../login/auth.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
@@ -76,29 +76,29 @@ export class EditAbstractDialogComponent implements OnInit {
     const conferenceId = this.authService.conference.id;
     this.showSpinner = true;
 
-    // this.onUpload().subscribe({
-    //   next: (response: Submission) => {
-    //     this.submission.abstractPaper = response.id;
-    //     this.submissionsService.editAbstract(conferenceId, this.submission).subscribe({
-    //       next: (responseSub: Submission) => {
-    //         this.snackBar.open('Abstract paper edited.', 'Ok', {
-    //           duration: 1000
-    //         });
-    //         this.showSpinner = false;
-    //         this.dialogRef.close(responseSub);
-    //       },
-    //       error: err => {
-    //         console.error('Error! ' + err);
-    //         alert('Error occurred while editing.');
-    //         this.showSpinner = false;
-    //       }
-    //     });
-    //   },
-    //   error: err => {
-    //     console.error('Error! ' + err);
-    //     alert('Error occurred while uploading file.');
-    //     this.showSpinner = false;
-    //   }
-    // });
+    this.onUpload().subscribe({
+      next: (response: Submission) => {
+        this.submission.abstractPaper = response.id;
+        this.submissionsService.editAbstract(conferenceId, this.submission).subscribe({
+          next: (responseSub: Submission) => {
+            this.snackBar.open('Abstract paper edited.', 'Ok', {
+              duration: 1000
+            });
+            this.showSpinner = false;
+            this.dialogRef.close(responseSub);
+          },
+          error: err => {
+            console.error('Error! ' + err);
+            alert('Error occurred while editing.');
+            this.showSpinner = false;
+          }
+        });
+      },
+      error: err => {
+        console.error('Error! ' + err);
+        alert('Error occurred while uploading file.');
+        this.showSpinner = false;
+      }
+    });
   }
 }

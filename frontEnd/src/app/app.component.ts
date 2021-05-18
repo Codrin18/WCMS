@@ -1,9 +1,9 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import {LoginDialogComponent} from './auth/login/login-dialog.component';
+import {LoginDialogComponent} from './login/login/login-dialog.component';
 import {Router} from '@angular/router';
-import {RegisterDialogComponent} from './auth/register/register-dialog.component';
-import {AuthService} from './auth/auth.service';
+import {RegisterDialogComponent} from './login/register/register-dialog.component';
+import {AuthService} from './login/auth.service';
 import {CreateConferenceDialogComponent} from './shared/components/create-conference-dialog/create-conference-dialog.component';
 import {ColorSchemeService} from './shared/services/color-scheme.service';
 import {Theme} from './shared/models/theme';

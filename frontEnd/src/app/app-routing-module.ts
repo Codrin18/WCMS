@@ -4,7 +4,7 @@ import {HomePageComponent} from './pages/home-page/home-page.component';
 import {TabDetailsComponent} from './pages/tab-details/tab-details.component';
 import {TabSubmissionsComponent} from './pages/tab-submissions/tab-submissions.component';
 import {TabAssignPapersComponent} from './pages/tab-assign-papers/tab-assign-papers.component';
-import {AuthGuard} from './auth/auth.guard';
+import {AuthGuard} from './login/auth.guard';
 import {Role} from './shared/models/role';
 import {TabReviewingComponent} from './pages/tab-reviewing/tab-reviewing.component';
 import {TabEvaluationsComponent} from './pages/tab-evaluations/tab-evaluations.component';
@@ -91,4 +91,3 @@ const routes: Routes = [
 
 export class AppRoutingModule {
 }
-

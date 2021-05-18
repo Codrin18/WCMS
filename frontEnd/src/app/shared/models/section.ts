@@ -1,4 +1,3 @@
-
 import {User} from './user';
 import {Conference} from './conference';
 import {Submission} from './submission';
@@ -15,3 +14,6 @@ export interface Section {
   listeners: User[];
   seats: number;
 }
+
+
+

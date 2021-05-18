@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {AuthService} from '../../../auth/auth.service';
+import {AuthService} from '../../../login/auth.service';
 
 @Component({
   selector: 'app-attend-section-dialog',
@@ -32,4 +32,3 @@ export class AttendSectionDialogComponent implements OnInit {
     this.dialogRef.close(true);
   }
 }
-

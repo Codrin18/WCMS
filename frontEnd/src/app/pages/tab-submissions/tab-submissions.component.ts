@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Submission} from '../../shared/models/submission';
 import {SubmissionsService} from '../../shared/services/submissions.service';
-import {AuthService} from '../../auth/auth.service';
+import {AuthService} from '../../login/auth.service';
 import {AddAbstractDialogComponent} from '../../shared/components/add-abstract-dialog/add-abstract-dialog.component';
 import {MatDialog, MatDialogConfig, MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -101,27 +101,27 @@ export class TabSubmissionsComponent implements OnInit {
     const conferenceId = this.authService.conference.id;
 
     // Upload file
-    // this.onUpload().subscribe({
-    //   next: (response: Submission) => {
-    //     this.submissions[i].fullPaper = response.id;
+    this.onUpload().subscribe({
+      next: (response: Submission) => {
+        this.submissions[i].fullPaper = response.id;
 
-    //     this.submissionsService.addFullPaper(conferenceId, this.submissions[i]).subscribe({
-    //       next: (responseSub: Submission) => {
-    //         this.snackBar.open('Full paper submitted.', 'Ok', {
-    //           duration: 1000
-    //         });
-    //       },
-    //       error: err => {
-    //         console.error('Error! ' + err);
-    //         alert('Error occurred while updating submission.');
-    //       }
-    //     });
-    //   },
-    //   error: err => {
-    //     console.error('Error! ' + err);
-    //     alert('Error occurred while uploading file on server.');
-    //   }
-    // });
+        this.submissionsService.addFullPaper(conferenceId, this.submissions[i]).subscribe({
+          next: (responseSub: Submission) => {
+            this.snackBar.open('Full paper submitted.', 'Ok', {
+              duration: 1000
+            });
+          },
+          error: err => {
+            console.error('Error! ' + err);
+            alert('Error occurred while updating submission.');
+          }
+        });
+      },
+      error: err => {
+        console.error('Error! ' + err);
+        alert('Error occurred while uploading file on server.');
+      }
+    });
   }
 
 }
