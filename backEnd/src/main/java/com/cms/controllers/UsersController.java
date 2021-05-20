@@ -1,4 +1,4 @@
-package main.java.com.cms.controllers;
+package com.cms.controllers;
 
 import com.cms.dto.user.UserDto;
 import com.cms.services.UsersService;
@@ -30,4 +30,3 @@ public class UsersController {
         return ResponseEntity.ok(usersService.getUserDto(username));
     }
 }
-

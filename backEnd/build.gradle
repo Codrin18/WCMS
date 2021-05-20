@@ -1,12 +1,23 @@
+buildscript {
+	dependencies {
+		classpath 'com.h2database:h2:1.4.197'
+	}
+}
 plugins {
-	id 'org.springframework.boot' version '2.4.5'
-	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'org.springframework.boot' version '2.2.5.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
+	id "org.flywaydb.flyway" version "6.3.3"
 }
 
-group = 'com.cms'
+group = 'backend'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
+
+flyway {
+	url = 'jdbc:h2:file:./target/foobar'
+	user = 'sa'
+}
 
 repositories {
 	mavenCentral()
@@ -15,11 +26,16 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	runtimeOnly 'mysql:mysql-connector-java'
-	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	implementation 'mysql:mysql-connector-java'
+	compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.2'
+	compile 'javax.mail:javax.mail-api:1.6.2'
+	compile group: 'com.sun.mail', name: 'javax.mail', version: '1.6.2'
+	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+	compile group: 'commons-io', name: 'commons-io', version: '2.5'
 }
-
 test {
 	useJUnitPlatform()
 }

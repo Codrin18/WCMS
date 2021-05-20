@@ -1,4 +1,4 @@
-package main.java.com.cms.controllers;
+package com.cms.controllers;
 
 import com.cms.dto.token.TokenDto;
 import com.cms.dto.token.TokenInformation;
@@ -20,11 +20,22 @@ public class InitializationController {
     @Autowired
     private InitializationService initializationService;
 
+    @Autowired
+    private DatabaseInitialization databaseInitialization;
+
     @PostMapping("/register")
     public ResponseEntity<UserDto> register(@RequestBody RegisterUserDto registerUserDto) {
 
         UserDto userDto = initializationService.register(registerUserDto);
         return new ResponseEntity<>(userDto, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/init")
+    public ResponseEntity<String> init() {
+
+        databaseInitialization.init();
+        return ResponseEntity.ok("initialized");
+
     }
 
     @PostMapping("/login")

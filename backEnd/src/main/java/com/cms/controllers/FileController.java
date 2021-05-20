@@ -1,4 +1,4 @@
-package main.java.com.cms.controllers;
+package com.cms.controllers;
 
 import com.cms.dto.FileDto;
 import com.cms.model.DBFile;
